@@ -6,21 +6,28 @@
        <button type="submit" class="btn btn-success">新規登録</button>
     </p>
   <% end %>
-    
-
-<table>
-  <tr>
-    <th>ジャンル</th>
-  </tr>
-  <% @genres.each do |genre| %>
-  <tr>
-    <td><%= genre.name %></td>
-    
-    <td>
-      <%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-sm btn-block btn-success mt-4" %>
-    </td>
-  </tr>
-  <% end %>
-</table>
-
   
+<div class="container">  
+  <div class="row">    
+    <div class="col-lg-5">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ジャンル</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+            <td>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-sm btn-block btn-success mt-4" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>  
+</div>  
