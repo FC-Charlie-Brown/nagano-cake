@@ -8,3 +8,24 @@
 
 admin = Admin.new(:email => 'admin@gmail.com', :password => '123456')
 admin.save!
+
+10.times do |n|
+  email = "test-#{n+1}@test.com"
+  password = "123456"
+  last_name = Faker::Name.last_name
+  first_name = Faker::Name.first_name
+  postal_code = Faker::Address.postcode
+  telephone_number = Faker::PhoneNumber.phone_number
+  address = Faker::Address.full_address
+  Customer.create!(
+               email: email,
+               password: password,
+               password_confirmation:  password,
+               last_name: last_name,
+               first_name: first_name,
+               postal_code: postal_code, 
+               telephone_number: telephone_number,
+               address: address,
+               is_deleted: false
+               )
+end

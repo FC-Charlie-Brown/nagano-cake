@@ -1,2 +1,53 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h2><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員情報</h2>
+<%= form_with  model:@customer,url: admin_customer_path,method: :put, local:true do |f| %>
+   <div class='input-block'>
+    <span>id:</span>
+    <span><%= @customer.id %></span>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :last_name, '名前（姓）' %>
+    <%= f.text_field :last_name, placeholder:"名前（姓）"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :first_name, '名前（名）' %>
+    <%= f.text_field :first_name, placeholder:"名前（名）"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :last_name_kana, '名前（カナ姓）' %>
+    <%= f.text_field :last_name_kana, placeholder:"名前（カナ姓）"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :first_name_kana, '名前（カナ名）' %>
+    <%= f.text_field :first_name_kana, placeholder:"名前（カナ名）"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :postal_code, '郵便番号' %>
+    <%= f.text_field :postal_code, placeholder:"郵便番号"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :address, '住所' %>
+    <%= f.text_field :address, placeholder:"住所"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :telephone_number, '電話番号' %>
+    <%= f.text_field :telephone_number, placeholder:"電話番号"%>
+  </div>
+
+  <div class='input-block'>
+    <%= f.label :is_deleted, '会員ステータス' %>
+    <label><%= f.radio_button :is_deleted, false %>有効</label>
+    <label><%= f.radio_button :is_deleted, true %>退会</label>
+  </div>
+
+
+  <%= f.submit "変更を保存" %>
+<% end %>
+
+<p><%= link_to '退会する', unsubscribe_path %></p>
