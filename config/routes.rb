@@ -54,9 +54,8 @@ Rails.application.routes.draw do
 
       resources :items, except: [:destroy]
 
-      resources :genres, only: [:edit, :create, :index]
-      
-      patch '/genres/:id', to: 'genres#update', as: 'genre'
+      resources :genres, only: [:edit, :create, :index, :update]
+
       patch '/order_details', to: 'order_details#update', as: 'order_details'
       get '/', to: 'homes#top', as: 'top'
     end
