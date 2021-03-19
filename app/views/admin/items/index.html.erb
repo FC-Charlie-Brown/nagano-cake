@@ -1,2 +1,32 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<h1>商品一覧</h1>
+<%= link_to "新規追加",new_admin_item_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <td>商品ID</td>
+      <td>商品名</td>
+      <td>税抜き価格</td>
+      <td>ジャンル</td>
+      <td>ステータス</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item),method: :get %></td> 
+        <td><%= item.price %></td>
+        <td><%= item.genre.name%></td> 
+        <td>
+          <% if item.sale_status %>
+            <span>販売中</span>
+          <% else %>
+            <span>販売停止中</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
