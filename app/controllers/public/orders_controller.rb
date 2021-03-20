@@ -8,26 +8,28 @@ class Public::OrdersController < ApplicationController
 
   def new
     @oder = Order.new
-    @addresses = Address.all
+    @address = Address.new
+    @addresses = Address.where(customer_id: current_customer.id)
   end
 
   def create
+    @address = Address.new(address_params)
+    @address.save
     @order = Order.new(order_params)
     @post.save
-     redirect_to confirm_path
+    redirect_to confirm_path
   end
 
 
   def confirm
-    @oder = Order.new
-    render :new if @post.invalid?
+    @orders = Order.all
   end
 
   def complete
   end
 
  private
-  # ストロングパラメータ
+
   def order_params
     params.require(:order).permit(:name, :postal_code, :address, :status, :payment_way, :sum, :shipping_fee, :customer_id)
   end
