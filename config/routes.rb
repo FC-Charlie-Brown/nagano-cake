@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
     resources :addresses, module: 'public', except: [:new, :show]
 
+
     resources :cart_items, module: 'public', only: [:index, :update, :create, :destroy]
     delete '/cart_items/destroy_all', to: 'public/cart_items#destroy_all', as: 'destroy_all'
 
