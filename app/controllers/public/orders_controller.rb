@@ -3,18 +3,33 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @orders = Order.all
   end
 
   def new
     @oder = Order.new
+    @addresses = Address.all
   end
 
   def create
+    @order = Order.new(order_params)
+    @post.save
+     redirect_to confirm_path
   end
 
+
   def confirm
+    @oder = Order.new
+    render :new if @post.invalid?
   end
 
   def complete
   end
+
+ private
+  # ストロングパラメータ
+  def order_params
+    params.require(:order).permit(:name, :postal_code, :address, :status, :payment_way, :sum, :shipping_fee, :customer_id)
+  end
+  
 end

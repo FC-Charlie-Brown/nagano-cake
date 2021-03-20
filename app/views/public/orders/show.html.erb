@@ -1,2 +1,6 @@
 <h1>Public::Orders#show</h1>
 <p>Find me in app/views/public/orders/show.html.erb</p>
+<% @orders.each do |order| %>
+<%= order.payment_way %>
+<%= order.payment_way %>
+<% end %>
