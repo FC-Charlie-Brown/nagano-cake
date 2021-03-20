@@ -1,7 +1,7 @@
-<h1>Customers#show</h1>
+<h1 class="lead"><%= "#{current_customer.last_name}" "#{current_customer.first_name}" %>さんのマイページ</h1>
 
-<p>登録情報 <%= link_to '編集する', edit_customers_path %></p>
-<table>
+<p>登録情報 <%= link_to '編集する', edit_customers_path,{class:'btn btn-primary'} %></p>
+<table class="table table-bordered w-75">
   <tr>
     <th>名前（姓）</th>
     <td><%= current_customer.last_name %></td>
@@ -32,5 +32,5 @@
   </tr>
 </table>
 
-<p>配送先 <%= link_to '一覧を見る', addresses_path %></p>
-<p>注文履歴 <%= link_to '一覧を見る', orders_path %></p>
+<p>配送先 <%= link_to '一覧を見る', addresses_path,{class:'btn btn-primary'} %></p>
+<p>注文履歴 <%= link_to '一覧を見る', orders_path,{class:'btn btn-primary'} %></p>

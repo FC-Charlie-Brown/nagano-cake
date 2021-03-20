@@ -1,7 +1,7 @@
-<h1><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員詳細</h1>
+<h1 class="lead"><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員詳細</h1>
 
 
-<table>
+<table class="table table-bordered w-75">
   <tr>
     <th>名前（姓）</th>
     <td><%= @customer.last_name %></td>
@@ -43,4 +43,4 @@
   </tr>
 </table>
 
-<p><%= link_to '編集する', edit_admin_customer_path(@customer.id) %></p>
+<p><%= link_to '編集する', edit_admin_customer_path(@customer.id),{class:'btn btn-secondary'} %></p>
