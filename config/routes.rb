@@ -22,9 +22,6 @@ Rails.application.routes.draw do
   end
 
 
-
-
-
     get '/', to: 'homes#top', as: 'top'
     get '/about', to: 'homes#about', as: 'about'
 
@@ -34,18 +31,17 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'unsubscribe'
     get '/customers/my_page', to: 'public/customers#show', as: 'my_page'
 
-
-    resources :orders, module: 'public', only: [:index, :show, :create, :new]
     get '/orders/confirm', to: 'public/orders#confirm', as: 'confirm'
     post '/orders/complete', to: 'public/orders#complete', as: 'complete'
+    resources :orders, module: 'public', only: [:index, :show, :create, :new]
 
     resources :items, module: 'public', only: [:index, :show]
 
     resources :addresses, module: 'public', except: [:new, :show]
 
-
-    resources :cart_items, module: 'public', only: [:index, :update, :create, :destroy]
     delete '/cart_items/destroy_all', to: 'public/cart_items#destroy_all', as: 'destroy_all'
+    resources :cart_items, module: 'public', only: [:index, :update, :create, :destroy]
+
 
 
     namespace :admin do

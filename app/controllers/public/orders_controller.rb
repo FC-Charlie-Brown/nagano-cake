@@ -19,8 +19,8 @@ class Public::OrdersController < ApplicationController
 
 
   def confirm
-    @oder = Order.new
-    render :new if @post.invalid?
+    #@oder = Order.new
+    #render :new if @post.invalid?
   end
 
   def complete
