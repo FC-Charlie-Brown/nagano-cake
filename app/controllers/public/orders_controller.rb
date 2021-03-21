@@ -23,7 +23,6 @@ class Public::OrdersController < ApplicationController
 
 
   def confirm
-    # @cart_items = current_cart
     @orders = Order.new
   end
 
