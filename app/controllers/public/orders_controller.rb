@@ -13,16 +13,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @address = Address.new(address_params)
-    @address.save
-    @order = Order.new(order_params)
-    @post.save
+    # @address = Address.new(address_params)
+    # @address.save
+    # ↑どうする？
+    @order = current_customer.orders.new(order_params)
+    @order.save
     redirect_to confirm_path
   end
 
 
   def confirm
-    @orders = Order.all
+    # @cart_items = current_cart
+    @orders = Order.new
   end
 
   def complete
