@@ -58,7 +58,6 @@ footer {
   color: #ff6680;
 }
 
-
  .main-vi {
     width: 800px;
     height: 300px;
@@ -81,4 +80,15 @@ footer {
   top: 50%;
   -webkit-transform : translateY(-50%);
   transform : translateY(-50%);
+}
+
+.admin-item-index{
+  position: relative;
+  line-height: 100px;
+}
+
+.icon{
+  position: absolute; /* .headerの左上を基準に絶対位置で指定する */
+  top: 22px; /* .headerの左上から22px下側へ移動する */
+  right: 22px;
 }
