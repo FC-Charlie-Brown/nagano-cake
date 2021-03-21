@@ -57,3 +57,15 @@ footer {
 .footer-text {
   color: #ff6680;
 }
+
+
+.admin-item-index{
+  position: relative;
+  line-height: 100px;
+}
+
+.icon{
+  position: absolute; /* .headerの左上を基準に絶対位置で指定する */
+  top: 22px; /* .headerの左上から22px下側へ移動する */
+  right: 22px;
+}
