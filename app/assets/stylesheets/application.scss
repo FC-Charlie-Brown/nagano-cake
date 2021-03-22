@@ -103,3 +103,20 @@ footer {
   top: 22px; /* .headerの左上から22px下側へ移動する */
   right: 22px;
 }
+
+.button {
+  display: flex;
+
+}
+
+.flex-container {
+　display: flex;
+  flex-direction: row;
+
+}
+
+.flex-item {
+　margin: 10px auto;
+	padding: 5px 10px;
+
+}
