@@ -1,39 +1,41 @@
-<h2>新規情報登録</h2>
-<%= form_with model: @item, url: admin_items_path, method: :post, local:true do |f| %>
+<div class="container">
+  <h5 class= "toptext text-center">新規情報登録</h5>
+  <div class="row justify-content-center">
+    <%= form_with model: @item, url: admin_items_path, method: :post, local:true do |f| %>
+    <div class='input-block'>
+    　<%= f.label :image, '商品画像', class: "mx-sm-3"%>
+      <%= f.attachment_field :image%>
+    </div>
 
-  <div class='input-block'>
-  　<%= f.label :image, '商品画像' %>
-    <%= f.attachment_field :image %>
-  </div>
+    <div class='input-block'>
+    　<%= f.label :name, '商品名', class: "mx-sm-3" %>
+      <%= f.text_field :name, placeholder: "商品名", class: "col-sm-8" %>
+    </div>
 
-  <div class='input-block'>
-  　<%= f.label :name, '商品名' %>
-    <%= f.text_field :name, class: "",placeholder: "商品名" %>
-  </div>
+    <div class='input-block'>
+      <%= f.label :introduction, '商品説明', class: "mx-sm-3" %>
+      <%= f.text_area :introduction, rows: 5,placeholder: "ここに説明文を記述します", class: "col-sm-8" %>
+    </div>
 
-  <div class='input-block'>
-    <%= f.label :introduction, '商品説明' %>
-    <%= f.text_area :introduction, class: "",placeholder: "ここに説明文を記述します" %>
-  </div>
+    <div class='input-block'>
+      <%= f.label :genre, 'ジャンル', class: "mx-sm-3" %>
+      <%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "選択してください" }, class: "col-sm-8" %>
+    </div>
 
-  <div class='input-block'>
-    <%= f.label :genre, 'ジャンル' %>
-    <%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "選択してください" } %>
-  </div>
+    <div class='input-block'>
+      <%= f.label :price, '税抜価格', class: "mx-sm-3" %>
+      <%= f.text_field :price, placeholder: "1000", class: "col-sm-8" %>円
+    </div>
 
-  <div class='input-block'>
-    <%= f.label :price, '税抜価格' %>
-    <%= f.text_field :price, class: "",placeholder: "1000" %>
-  </div>
-
-  <div class='input-block'>
-    <%= f.label :name, '販売ステータタス' %>
-  　<%= f.radio_button :sale_status, true %>
-    <%= f.label :sale_status, '販売中', value: true %>
-    <%= f.radio_button :sale_status, false %>
-    <%= f.label :sale_status, '販売停止中', value: f %>
-  </div>
-
-  <%= f.submit '新規登録', class: "btn btn-success" %>
-<% end %>
+    <div class='input-block'>
+      <%= f.label :name, '販売ステータタス', class: "mx-sm-3" %>
+    　<%= f.radio_button :sale_status, true %>
+      <%= f.label :sale_status, '販売中', value: true %>
+      <%= f.radio_button :sale_status, false %>
+      <%= f.label :sale_status, '販売停止中', value: f %>
+    </div>
+    <%= f.submit '新規登録', class: "btn btn-success col-xs-7" %>
+  <% end %>
+ </div>
+</div>
 
