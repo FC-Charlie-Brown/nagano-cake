@@ -26,12 +26,13 @@ class Public::OrdersController < ApplicationController
 
 
   def confirm
-    # @cart_item = current_cartとか？？
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     @addresses = Address.where(customer_id: current_customer.id)
     @orders = Order.where(customer_id: current_customer.id)
     @order = Order.new(
       customer: current_customer,
-      payment_way: params[:order][:payment_way]
+      payment_way: params[:order][:payment_way],
+      address: params[:order][:address]
     )
   end
 

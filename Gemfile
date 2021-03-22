@@ -77,5 +77,5 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 
 gem 'rails-i18n'
-gem 'enum_help' 
+gem 'enum_help'
 

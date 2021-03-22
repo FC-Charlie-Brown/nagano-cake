@@ -1,33 +1,71 @@
 <h2>注文情報確認</h2>
-  <table border="4">
-      <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-      </tr>
-      <tr>
-          <td>〇〇</td>
-          <td>〇〇</td>
-          <td>〇〇</td>
-          <td>〇〇</td>
-      </tr>
-  </table>
-  <table border="3" align ="left">
-      <tr>
-          <td>送料</td>
-          <td>〇〇</td>
-      </tr>
-      <tr>
-          <td>商品合計</td>
-          <td>〇〇</td>
-      </tr>
-      <tr>
-          <td>請求金額</td>
-          <td>〇〇</td>
-      </tr>
-  </table><br clear="left">
+<table class="table table-bordered w-75">
+  <thead class="thead-light">
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      
+    </tr>
+  </thead>
+  <% total_price = 0 %>
+  <% @cart_items.each do |cart_item| %>
+    <% 
+        price = (cart_item.item.price.to_i*1.1).to_i
+        amount = cart_item.amount.to_i 
+        item_total_price = price * amount
+        total_price += item_total_price
+    %>
+    <tr>
+      <td><%=  attachment_image_tag cart_item.item, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300",class:'cart-item-image' %><%= cart_item.item.name %></td>
+      <td><%= "#{price}円" %></td>
+      <td>
+         <%= "#{amount}" %>
+      </td>
+      <td><%= "#{item_total_price}円" %></td>
+     
+    </tr>
+  <% end %>
+</table>
+<p class="total-price">合計金額:<%= "#{total_price}円" %></p>
 
 <p>支払い方法</p>
+<%= @order.payment_way %>
 
 <p>お届け先</p>
+<%= @order.address %>
+
+
+<%
+if @order.address == "default_address" 
+%>
+〒<%= current_customer.postal_code %>
+  <%= current_customer.address %>
+  <% end %>
+<%
+if @order.address == "other_address"
+%>
+  <%= @order.address %>
+
+  <% end %>
+
+
+<%= form_with model: @order, method: :post, url:  new_order_path do |f| %>
+	<%= f.hidden_field :cart_items %>
+	<%= f.hidden_field :address %>
+	<%= f.hidden_field :payment_way %>
+	<%= f.submit '入力画面に戻る' %>
+<% end %>
+
+<%= form_with model: @order, method: :post, url: complete_path do |f| %>
+	<%= f.hidden_field :cart_items %>
+	<%= f.hidden_field :address %>
+	<%= f.hidden_field :payment_way %>
+	<%= f.submit '送信する' %>
+<% end %>
+
+
+
+
+
