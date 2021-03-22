@@ -1,5 +1,16 @@
+
 <div class="container">
 <h5 class= "toptext text-center"><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員情報編集</h5>
+
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <% @customer.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
+<h2 class="lead"><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員情報</h2>
 <%= form_with  model:@customer,url: admin_customer_path,method: :put, local:true do |f| %>
    <div class='form-group'>
     <span>id:</span>

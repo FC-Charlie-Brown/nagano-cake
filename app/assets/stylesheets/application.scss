@@ -104,8 +104,25 @@ footer {
   font-size: 30px;
   color: #b9c1ca;
 }
+
 .toptext{
   width:240px;
   margin:20px 0;
   background-color: #f8f9fa;
+}
+
+.button {
+  display: flex;
+
+}
+
+.flex-container {
+　display: flex;
+  flex-direction: row;
+
+}
+
+.flex-item {
+　margin: 10px auto;
+	padding: 5px 10px;
 }
