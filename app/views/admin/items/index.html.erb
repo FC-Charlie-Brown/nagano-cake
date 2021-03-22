@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row, admin-item-index">
-    <h4 class = "">商品一覧</h4>
+  <div class="row icon-relative">
+    <h5 class= "toptext text-center">商品一覧</h5>
     <%= link_to new_admin_item_path, method: :get do %>
-      <i class="fas fa-plus-circle fa-2x icon"></i>
+      <i class="fas fa-plus-circle icon"></i>
     <% end %>
   </div>
   <div class="row">
-    <table class="table">
-      <thead>
+    <table class="table box">
+      <thead class="bg-light">
         <tr>
           <td>商品ID</td>
           <td>商品名</td>
@@ -20,14 +20,14 @@
         <% @items.each do |item| %>
           <tr>
             <td><%= item.id %></td>
-            <td><%= link_to item.name, admin_item_path(item),method: :get %></td>
+            <td><%= link_to item.name, admin_item_path(item),method: :get, class:"text-dark" %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name%></td>
             <td>
               <% if item.sale_status %>
-                <span>販売中</span>
+                <span class="text-success">販売中</span>
               <% else %>
-                <span>販売停止中</span>
+                <span class="text-muted">販売停止中</span>
               <% end %>
             </td>
           </tr>
