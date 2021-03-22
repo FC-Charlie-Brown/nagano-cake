@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
   before_action :require_admin
 
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(5)
   end
 
   def edit
@@ -10,9 +10,12 @@ class Admin::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    customer.update(customer_params)
-    redirect_to admin_customer_path(params[:id])
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to admin_customer_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   def show
