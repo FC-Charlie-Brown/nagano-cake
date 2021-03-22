@@ -1,3 +1,10 @@
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <% @customer.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <h2 class="lead">プロフィール編集</h2>
 <%= form_with  model:@customer,url: customers_path, local:true do |f| %>
 
