@@ -27,13 +27,28 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    @addresses = Address.where(customer_id: current_customer.id)
+    # @addresses = Address.where(customer_id: current_customer.id)
     @orders = Order.where(customer_id: current_customer.id)
     @order = Order.new(
       customer: current_customer,
       payment_way: params[:order][:payment_way],
       address: params[:order][:address]
     )
+    @radio_value = params[:order][:address]
+    
+    if params[:order][:address] == 0
+      
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    
+    elsif params[:order][:addresses] == 1
+      address 
+    
+  #   elsif  params[:order][:addresses] == 2
+      
+  end
+
   end
 
   def complete

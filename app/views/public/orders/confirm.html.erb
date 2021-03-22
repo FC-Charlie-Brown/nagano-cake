@@ -31,37 +31,25 @@
 <p class="total-price">合計金額:<%= "#{total_price}円" %></p>
 
 <p>支払い方法</p>
-<%= @order.payment_way %>
+<%= @order.payment_way_i18n %>
+
 
 <p>お届け先</p>
-<%= @order.address %>
+<%= @radio_value %>
 
 
-<%
-if @order.address == "default_address" 
-%>
-〒<%= current_customer.postal_code %>
-  <%= current_customer.address %>
-  <% end %>
-<%
-if @order.address == "other_address"
-%>
-  <%= @order.address %>
 
-  <% end %>
-
-
-<%= form_with model: @order, method: :post, url:  new_order_path do |f| %>
-	<%= f.hidden_field :cart_items %>
-	<%= f.hidden_field :address %>
-	<%= f.hidden_field :payment_way %>
-	<%= f.submit '入力画面に戻る' %>
-<% end %>
 
 <%= form_with model: @order, method: :post, url: complete_path do |f| %>
-	<%= f.hidden_field :cart_items %>
+	<%= f.hidden_field :postal_code %>
 	<%= f.hidden_field :address %>
+	<%= f.hidden_field :name %>
 	<%= f.hidden_field :payment_way %>
+	<%= f.hidden_field :total_price %>
+	<%= f.hidden_field :shipping_fee %>
+	<%= f.hidden_field :sum %>
+	<%= f.hidden_field :customer_id, value: current_customer.id %>
+	
 	<%= f.submit '送信する' %>
 <% end %>
 
