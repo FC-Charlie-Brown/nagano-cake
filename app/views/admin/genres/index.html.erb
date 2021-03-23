@@ -1,20 +1,25 @@
-
+<div class="container">
 <h5 class= "toptext text-center">ジャンル一覧・追加</h5>
   <%= form_with model: @genre, url:'/admin/genres', local:true do |f| %>
-    <p>ジャンル名
-      <%= f.text_field :name %>
-       <button type="submit" class="btn btn-success">新規登録</button>
-    </p>
+  
+      <div class="form-group row">
+        <%= f.label :name, 'ジャンル名', class:"col-sm-2 col-form-label"%>
+        <div class="col-sm-3">
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-success">新規登録</button>
+        </div>
+      </div>
   <% end %>
-
-<!--<div class="container">  -->
-  <!--<div class="row">-->
-    <!--<div class="col-lg-5">-->
+  <br>
+  <div class="row">
+    <div class="col-lg-5">
       <table  class="table">
         <thead class="thead-light">
           <tr>
-            <th scope="col">ジャンル</th>
-            <th scope="col"></th>
+            <th>ジャンル</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +33,6 @@
           <% end %>
         </tbody>
       </table>
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>  -->
+    </div>
+  </div>
+</div>  

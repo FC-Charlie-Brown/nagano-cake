@@ -29,9 +29,9 @@
     </div>
 
     <div class="row form-group">
-　    <legend class="col-sm-3 col-form-label">税込価格</legend>
+　    <legend class="col-sm-3 col-form-label">税込価格<br>(税抜き価格)</legend>
       <div class="col-sm-3">
-        <legend class="form-control-plaintext"><%= @item.price %></legend>
+        <legend class="form-control-plaintext"><%= (@item.price.to_i*1.1).to_i(:delimited) %>(<%= @item.price %>)円</legend>
       </div>
     </div>
 

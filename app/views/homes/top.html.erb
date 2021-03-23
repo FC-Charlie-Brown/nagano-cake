@@ -21,15 +21,3 @@
        <%= item.price %></div>
       <% end %>
       <%= link_to '全ての商品を見る>', items_path, class: "all_item" %>
-
-    <div class="row">
-     <div class="flex-container">
-      <% @items.each do |item|%>
-       <div class="flex-item"><%= attachment_image_tag(item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: "200x200") %></div>
-       <div class="flex-item"><%= item.name %></div>
-       <div class="flex-item"><%= item.price %></div>
-   　　<% end %>
-   </div>
-
-   </div>
- </div>

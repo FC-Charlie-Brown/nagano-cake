@@ -1,8 +1,14 @@
-<h5 class= "toptext text-center">ジャンル編集</h5>
-
-<%= form_with model: @genre, url: admin_genre_path, method: :patch, local: true do |f| %>
-  <p>ジャンル名
-    <%= f.text_field :name %>
-    <button type="submit" class="btn btn-success">変更を保存</button>
-  </p>
-<% end %>
+<div class="container">
+  <h5 class= "toptext text-center">ジャンル編集</h5>
+   <%= form_with model: @genre, url: admin_genre_path, method: :patch, local: true do |f| %>
+      <div class="form-group row">
+        <%= f.label :name, 'ジャンル名', class:"col-sm-2 col-form-label"%>
+        <div class="col-sm-3">
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-success">変更を保存</button>
+        </div>
+      </div>
+  <% end %>
+</div>
