@@ -13,17 +13,12 @@
    </div>
   </div>
    <h3>新着商品</h3>
-    <div class="row">
-     <div class="flex-container">
-      <% @items.each do |item|%>
-      <div class="flex-item"><%= attachment_image_tag(item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: "200x200") %></div>
-      <div class="flex-item"><%= item.name %></div>
-      <div class="flex-item"><%= item.price %></div>
-
-   <% end %>
+    <div class="row flex-container">
+      <% @items.last(4).each do |item|%>
+       <div class="flex-item"><%= attachment_image_tag(item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: "200x200") %></br>
+       <%= item.name %><br>
+       <%= item.price %></div>
+      <% end %>
+      <%= link_to '全ての商品を見る>', items_path, class: "all_item" %>
    </div>
-   </div>
-   <div class="button">
-  <span>詳細はこちら></span><i class="fas fa-chevron-right"></i>
-</div>
  </div>
