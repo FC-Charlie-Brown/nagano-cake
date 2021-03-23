@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get '/customers/my_page', to: 'public/customers#show', as: 'my_page'
 
     post '/orders/confirm', to: 'public/orders#confirm', as: 'confirm'
-    post '/orders/complete', to: 'public/orders#complete', as: 'complete'
+    get '/orders/complete', to: 'public/orders#complete', as: 'complete'
     resources :orders, module: 'public', only: [:index, :show, :create, :new]
   
     resources :items, module: 'public', only: [:index, :show]

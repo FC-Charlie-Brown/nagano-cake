@@ -6,54 +6,58 @@
       <th>単価（税込）</th>
       <th>数量</th>
       <th>小計</th>
-      
+
     </tr>
   </thead>
   <% total_price = 0 %>
   <% @cart_items.each do |cart_item| %>
-    <% 
+  <% 
         price = (cart_item.item.price.to_i*1.1).to_i
         amount = cart_item.amount.to_i 
         item_total_price = price * amount
         total_price += item_total_price
+  
     %>
-    <tr>
-      <td><%=  attachment_image_tag cart_item.item, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300",class:'cart-item-image' %><%= cart_item.item.name %></td>
-      <td><%= "#{price}円" %></td>
-      <td>
-         <%= "#{amount}" %>
-      </td>
-      <td><%= "#{item_total_price}円" %></td>
-     
-    </tr>
+  <tr>
+    <td>
+      <%=  attachment_image_tag cart_item.item, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300",class:'cart-item-image' %><%= cart_item.item.name %>
+    </td>
+    <td><%= "#{price}円" %></td>
+    <td>
+      <%= "#{amount}" %>
+    </td>
+    <td><%= "#{item_total_price}円" %></td>
+
+  </tr>
   <% end %>
 </table>
-<p class="total-price">合計金額:<%= "#{total_price}円" %></p>
-
-<p>支払い方法</p>
-<%= @order.payment_way_i18n %>
-
-
-<p>お届け先</p>
-<%= @radio_value %>
+<% sum = @shipping_fee.to_i + total_price.to_i  %>
+<p class="total-price">送料:<%= "#{@shipping_fee}円" %></p>
+<p class="total-price">商品合計:<%= "#{total_price}円" %></p>
+<p class="total-price">請求金額:<%= "#{sum}円" %></p>
 
 
+<p>支払い方法:
+<%= I18n.t("enums.order.payment_way.#{@payment_way}") %>
+</p>
+
+<p>お届け先:
+<%= "#{@order_address}" + " #{@shipping_name}" %>
+</p>
 
 
-<%= form_with model: @order, method: :post, url: complete_path do |f| %>
-	<%= f.hidden_field :postal_code %>
-	<%= f.hidden_field :address %>
-	<%= f.hidden_field :name %>
-	<%= f.hidden_field :payment_way %>
-	<%= f.hidden_field :total_price %>
-	<%= f.hidden_field :shipping_fee %>
-	<%= f.hidden_field :sum %>
-	<%= f.hidden_field :customer_id, value: current_customer.id %>
-	
-	<%= f.submit '送信する' %>
+
+
+<%= form_with model: @order, method: :post, url: orders_path do |f| %>
+<%= f.hidden_field :customer_id, :value => current_customer.id %>
+<%= f.hidden_field :shipping_fee, :value => @shipping_fee %>
+<%= f.hidden_field :payment_way, :value => @payment_way %>
+<%= f.hidden_field :status, :value => 1 %>
+<%= f.hidden_field :name, :value => @shipping_name %>
+<%= f.hidden_field :address, :value => @submit_address  %>
+
+<%= f.hidden_field :postal_code, :value => @submit_postal_code %>
+<%= f.hidden_field :sum, :value => sum %>
+
+<%= f.submit '送信する' %>
 <% end %>
-
-
-
-
-
