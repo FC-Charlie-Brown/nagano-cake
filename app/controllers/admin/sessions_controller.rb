@@ -32,6 +32,6 @@ class Admin::SessionsController < Devise::SessionsController
 
   #ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
-    top_path
+    new_admin_session_path
   end
 end

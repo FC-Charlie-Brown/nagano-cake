@@ -1,5 +1,4 @@
 class Public::OrdersController < ApplicationController
-  
   def index
     @orders = Order.where(customer_id: current_customer.id)
     @orders.each do |order| 
@@ -37,8 +36,11 @@ class Public::OrdersController < ApplicationController
     end
 	end
 
+
+
+
   def new
-    @order = Order.new
+    @oder = Order.new
     @address = Address.new
     @addresses = Address.where(customer_id: current_customer.id)
   end
@@ -66,6 +68,14 @@ class Public::OrdersController < ApplicationController
     #ありがとうページへ
     redirect_to complete_path
   end
+  
+  def create_new_address
+    @new_address = Address.new(address_params)
+    @new_address.customer_id = current_customer.id
+    @new_address.save
+    redirect_to confirm_path
+  end
+
 
 
   def confirm
@@ -113,8 +123,8 @@ class Public::OrdersController < ApplicationController
     #注文データ作成
     @order = Order.new
 
-
   end
+
 
   def complete
 
