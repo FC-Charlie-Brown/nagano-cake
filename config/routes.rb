@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'unsubscribe'
     get '/customers/my_page', to: 'public/customers#show', as: 'my_page'
 
-    get '/orders/confirm', to: 'public/orders#confirm', as: 'confirm'
-    post '/orders/complete', to: 'public/orders#complete', as: 'complete'
+    post '/orders/confirm', to: 'public/orders#confirm', as: 'confirm'
+    get '/orders/complete', to: 'public/orders#complete', as: 'complete'
     resources :orders, module: 'public', only: [:index, :show, :create, :new]
   
     resources :items, module: 'public', only: [:index, :show]

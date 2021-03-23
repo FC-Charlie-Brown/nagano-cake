@@ -1,16 +1,16 @@
 　　<h1>配送先編集</h1>
 　　　<%= form_with  model:@address,url: address_path, method: :patch, local:true do |f| %>
-        <div class='input-block'>
+        <div class='form-group'>
           <%= f.label :postal_code, '郵便番号' %>
           <%= f.text_field :postal_code, placeholder:"郵便番号"%>
       　</div>
 
-        <div class='input-block'>
+        <div class='form-group'>
           <%= f.label :address, '住所' %>
           <%= f.text_field :address, placeholder:"住所"%>
         </div>
 
-        <div class='input-block'>
+        <div class='form-group'>
           <%= f.label :name, '宛名' %>
           <%= f.text_field :name, placeholder:"宛名"%>
         </div>

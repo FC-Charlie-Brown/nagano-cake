@@ -2,17 +2,17 @@
 
       <%= form_with  model:@address,url: addresses_path, local:true do |f| %>
       　<%= f.hidden_field :customer_id, :value => current_customer.id %>
-        <div class='input-block'>
+        <div class='form-group'>
           <%= f.label :postal_code, '郵便番号' %>
           <%= f.text_field :postal_code, placeholder:"郵便番号"%>
       　</div>
 
-        <div class='input-block'>
+        <div class='form-group'>
           <%= f.label :address, '住所' %>
           <%= f.text_field :address, placeholder:"住所"%>
         </div>
 
-        <div class='input-block'>
+        <div class='form-group'>
           <%= f.label :name, '宛名' %>
           <%= f.text_field :name, placeholder:"宛名"%>
         </div>

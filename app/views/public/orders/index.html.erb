@@ -11,14 +11,20 @@
               </tr>
             </thead>
 
+      <% 
+        @orders.each do |order| 
+        name = eval("@name#{order.id}")
+        
+      %>
 
         <tr>
-          <td><%=  %></td>
-          <td><%=  %></td>
-          <td><%=  %></td>
-          <td><%=  %></td>
-          <td><%=  %></td>
-          <td><%= link_to '表示する' %></td>
+          <td><%= order.created_at %></td>
+          <td><%= order.address %></td>
+          <td><%= simple_format name %></td>
+          <td><%= order.sum %></td>
+          <td><%= order.status %></td>
+          <td><%= link_to '表示する', order_path(order.id) %></td>
 　　　　</tr>
+      <% end %>
 
       </table>
