@@ -1,16 +1,13 @@
 class Public::OrdersController < ApplicationController
-  
   def index
-    # @orders = current_customer.orders
   end
 
-  	def show
-	 # @order = Order.find(params[:id])
-  #   @order_details = @order.order_details
-	end
+  def show
+    @orders = Order.all
+  end
 
   def new
-    @order = Order.new
+    @oder = Order.new
     @address = Address.new
     @addresses = Address.where(customer_id: current_customer.id)
   end
@@ -34,6 +31,7 @@ class Public::OrdersController < ApplicationController
 
 
   def confirm
+    @orders = Order.new
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @addresses = Address.where(customer_id: current_customer.id)
     @orders = Order.where(customer_id: current_customer.id)
