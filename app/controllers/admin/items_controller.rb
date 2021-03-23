@@ -9,6 +9,12 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admin_item_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   def create
