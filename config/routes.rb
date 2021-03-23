@@ -22,9 +22,6 @@ Rails.application.routes.draw do
   end
 
 
-
-
-
     get '/', to: 'homes#top', as: 'top'
     get '/about', to: 'homes#about', as: 'about'
 
@@ -34,17 +31,17 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'unsubscribe'
     get '/customers/my_page', to: 'public/customers#show', as: 'my_page'
 
-
+    post '/orders/confirm', to: 'public/orders#confirm', as: 'confirm'
+    get '/orders/complete', to: 'public/orders#complete', as: 'complete'
     resources :orders, module: 'public', only: [:index, :show, :create, :new]
-    get '/orders/confirm', to: 'public/orders#confirm', as: 'confirm'
-    post '/orders/complete', to: 'public/orders#complete', as: 'complete'
-
+  
     resources :items, module: 'public', only: [:index, :show]
 
     resources :addresses, module: 'public', except: [:new, :show]
 
-    resources :cart_items, module: 'public', only: [:index, :update, :create, :destroy]
     delete '/cart_items/destroy_all', to: 'public/cart_items#destroy_all', as: 'destroy_all'
+    resources :cart_items, module: 'public', only: [:index, :update, :create, :destroy]
+
 
 
     namespace :admin do
@@ -54,7 +51,7 @@ Rails.application.routes.draw do
 
       resources :items, except: [:destroy]
 
-      resources :genres, only: [:edit, :update, :create, :index]
+      resources :genres, only: [:edit, :create, :index, :update]
 
       patch '/order_details', to: 'order_details#update', as: 'order_details'
       get '/', to: 'homes#top', as: 'top'

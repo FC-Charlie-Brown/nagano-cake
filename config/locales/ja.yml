@@ -1,0 +1,6 @@
+ja:
+  enums:
+    order:
+      payment_way:
+        card: 'クレジットカード'
+        bank: '銀行振込'

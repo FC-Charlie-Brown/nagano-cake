@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_074103) do
+ActiveRecord::Schema.define(version: 2021_03_22_133537) do
 
   create_table "addresses", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2021_03_16_074103) do
   create_table "cart_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "customer_id", null: false
     t.integer "item_id", null: false
     t.integer "amount", null: false
+    t.integer "customer_id"
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_074103) do
     t.integer "payment_way", null: false
     t.integer "status", null: false
     t.string "name", null: false
-    t.integer "address", null: false
+    t.string "address", null: false
     t.integer "postal_code", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
