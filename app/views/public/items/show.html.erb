@@ -9,7 +9,7 @@
   	<h3><%= @item.name %></h3>
     <p><%= @item.introduction %></p>
     <br>
-    <span class="ltax">¥<%= @item.price.to_i*1.1 %></span><sapn class="stax">(税込)</sapn>
+    <span class="ltax">¥<%= (@item.price.to_i*1.1).to_s(:delimited) %></span><sapn class="stax">(税込)</sapn>
     
      
       <%= form_with url: cart_items_path, local:true do |f| %>

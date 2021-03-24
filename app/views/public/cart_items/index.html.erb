@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row justify-content-between">
   <h5 class= "toptext text-center">ショッピングカード</h5>
   <div class="col-sm-2 align-self-center">
   <%= link_to 'カートを空にする', destroy_all_path, {class:'btn btn-danger', method: :delete } %>
@@ -46,7 +46,7 @@
   <%= link_to '買い物を続ける', items_path,{class:'btn btn-primary col-sm-2'} %>
   <table class="table table-bordered w-30 col-sm-3 float-right">
     <tr>
-      <td>合計金額</td>
+      <td class="bg-light">合計金額</td>
       <td><%= "#{total_price}円" %></td>
     </tr>
   </table>

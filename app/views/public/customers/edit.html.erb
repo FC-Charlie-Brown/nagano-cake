@@ -1,43 +1,40 @@
-<h2 class="lead">プロフィール編集</h2>
+<h5 class= "toptext2 text-center">会員情報編集</h5>
 <%= form_with  model:@customer,url: customers_path, local:true do |f| %>
 
-  <div class='form-group'>
-    <%= f.label :last_name, '名前（姓）' %>
-    <%= f.text_field :last_name, placeholder:"名前（姓）",class:'form-control'%>
+  <div class='form-group row'>
+    <legend class="col-form-label col-sm-2">氏名</legend>
+    <%= f.text_field :last_name, placeholder:"名前（姓）",class:'form-control col-sm-3'%>
+    <%= f.text_field :first_name, placeholder:"名前（名）",class:'form-control col-sm-3 offset-sm-1'%>
   </div>
 
-  <div class='form-group'>
-    <%= f.label :first_name, '名前（名）' %>
-    <%= f.text_field :first_name, placeholder:"名前（名）",class:'form-control'%>
+  <div class='form-group row'>
+    <legend class="col-form-label col-sm-2">フリガナ</legend>
+    <%= f.text_field :last_name_kana, placeholder:"名前（カナ姓）",class:'form-control col-sm-3'%>
+    <%= f.text_field :first_name_kana, placeholder:"名前（カナ名）" ,class:'form-control col-sm-3 offset-sm-1'%>
   </div>
 
-  <div class='form-group'>
-    <%= f.label :last_name_kana, '名前（カナ姓）' %>
-    <%= f.text_field :last_name_kana, placeholder:"名前（カナ姓）",class:'form-control'%>
+  <div class="form-group row">
+    <%= f.label :postal_code, '郵便番号',class:"col-sm-2 col-form-label"%>
+    <%= f.text_field :postal_code, placeholder:"郵便番号" ,class:'form-control col-sm-3'%>
   </div>
 
-  <div class='form-group'>
-    <%= f.label :first_name_kana, '名前（カナ名）' %>
-    <%= f.text_field :first_name_kana, placeholder:"名前（カナ名）",class:'form-control'%>
+  <div class="form-group row">
+    <%= f.label :address, '住所',class:"col-sm-2 col-form-label"%>
+    <%= f.text_field :address, placeholder:"住所" ,class:'form-control col-sm-8'%>
   </div>
 
-  <div class='form-group'>
-    <%= f.label :postal_code, '郵便番号' %>
-    <%= f.text_field :postal_code, placeholder:"郵便番号",class:'form-control'%>
+　<div class="form-group row">
+    <%= f.label :telephone_number, '電話番号',class:"col-sm-2 col-form-label"%>
+    <%= f.text_field :telephone_number, placeholder:"電話番号" ,class:'form-control col-sm-3'%>
+  </div>
+  
+  <div class="form-group row">
+    <%= f.label :email, 'メールアドレス',class:"col-sm-2 col-form-label"%>
+    <%= f.text_field :email, placeholder:"メールアドレス" ,class:'form-control col-sm-3'%>
   </div>
 
-  <div class='form-group'>
-    <%= f.label :address, '住所' %>
-    <%= f.text_field :address, placeholder:"住所",class:'form-control'%>
+  <div class="form-group row">
+    <%= f.submit "変更内容を保存", class:"btn btn-success offset-sm-2" %>
+  　<%= link_to '退会する', unsubscribe_path, class:"btn btn-danger offset-sm-2" %>
   </div>
-
-  <div class='form-group'>
-    <%= f.label :telephone_number, '電話番号' %>
-    <%= f.text_field :telephone_number, placeholder:"電話番号",class:'form-control'%>
-  </div>
-
-
-  <%= f.submit "変更を保存", class:"btn btn-success mt-3 mb-3" %>
 <% end %>
-
-<p><%= link_to '退会する', unsubscribe_path, class:"btn btn-danger" %></p>
