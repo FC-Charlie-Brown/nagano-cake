@@ -16,7 +16,7 @@
 
     <div class="row flex-container">
       <% @items.last(4).each do |item|%>
-       <div class="flex-item"><%= attachment_image_tag(item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: "200x200") %></br>
+       <div class="flex-item"><%= link_to attachment_image_tag(item, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", size: "200x200"), item_path(item.id) %></br>
        <%= item.name %><br>
        <%= item.price %></div>
       <% end %>
