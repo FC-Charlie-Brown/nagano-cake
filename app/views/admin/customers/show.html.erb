@@ -1,6 +1,4 @@
-<div class="container">
-  <h5 class= "toptext text-center"><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員詳細</h5>
-  
+<h5 class= "toptext2 text-center"><%= "#{@customer.last_name}" "#{@customer.first_name}" %>さんの会員詳細</h5>
   <table class="table table-borderless">
     <tr>
       <th>会員ID</th>
@@ -44,4 +42,3 @@
   </table>
   
   <p><%= link_to '編集する', edit_admin_customer_path(@customer.id),{class:'btn btn-success col-sm-1 offset-sm-3'} %></p>
-</div>
