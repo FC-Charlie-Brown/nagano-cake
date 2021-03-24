@@ -1,55 +1,41 @@
-
-<div class="container">
-  <h5 class= "toptext text-center">商品</h5>
+<h5 class= "toptext text-center">商品</h5>
   <div class="row">
     <div class="col-lg-3">
       <%= attachment_image_tag @item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %><br>
     </div>
     <div class="col-lg-7">
 
-	  <div class="row form-group">
-　    <legend class="col-sm-3 col-form-label">商品名</legend>
-      <div class="col-sm-3">
-        <legend class="form-control-plaintext"><%= @item.name %></legend>
+  	  <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">商品名</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.name %></legend>
       </div>
-    </div>
-
-    <div class="row form-group">
-　    <legend class="col-sm-3 col-form-label">商品説明</legend>
-      <div class="col-sm-3">
-        <legend class="form-control-plaintext"><%= @item.introduction %></legend>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">商品説明</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.introduction %></legend>
       </div>
-    </div>
-
-    <div class="row form-group">
-　    <legend class="col-sm-3 col-form-label">ジャンル</legend>
-      <div class="col-sm-3">
-        <legend class="form-control-plaintext"><%= @item.genre.name%></legend>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">ジャンル</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.genre.name%></legend>
       </div>
-    </div>
-
-    <div class="row form-group">
-　    <legend class="col-sm-3 col-form-label">税込価格</legend>
-      <div class="col-sm-3">
-        <legend class="form-control-plaintext"><%= @item.price %></legend>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">税込価格<br>(税抜価格)</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.price.to_i*1.1 %>(<%= @item.price %>)円</legend>
       </div>
-    </div>
-
-    <div class="row form-group">
-　    <legend class="col-sm-3 col-form-label">販売ステータス</legend>
-      <div class="col-sm-3">
-        <legend class="form-control-plaintext">
-        	<% if @item.sale_status %>
-            <span class="text-success">販売中</span>
-          <% else %>
-            <span class="text-muted">販売停止中</span>
-           <% end %>
-        </legend>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">販売ステータス</legend>
+          <legend class="form-control-plaintext col-sm-3">
+          	<% if @item.sale_status %>
+              <span class="text-success">販売中</span>
+            <% else %>
+              <span class="text-muted">販売停止中</span>
+             <% end %>
+          </legend>
       </div>
+        <%= link_to "編集する", edit_admin_item_path(@item.id), method: :get, class: "btn btn-success col-sm-3 offset-sm-2"%>
     </div>
-
-      <%= link_to "編集する", edit_admin_item_path(@item.id), method: :get, class: "btn btn-success col-sm-3 offset-sm-2"%>
-    </div>
- </div>
-</div>
+  </div>
 

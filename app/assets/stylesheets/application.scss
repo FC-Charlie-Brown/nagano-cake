@@ -33,7 +33,7 @@ header {
 .logo {
     background-position:left;
      margin-left: 25px;
-    
+
 }
 .nav-list {
   text-align: right;
@@ -117,6 +117,12 @@ footer {
   background-color: #f8f9fa;
 }
 
+.toptext2{
+  width:350px;
+  margin:20px 0;
+  background-color: #f8f9fa;
+}
+
 .button {
   display: flex;
 
@@ -134,4 +140,11 @@ footer {
 
 .all_item {
    margin-left: auto;
+}
+
+.ltax{
+  font-size: 20px;
+}
+.stax{
+  font-size: 10px;
 }
