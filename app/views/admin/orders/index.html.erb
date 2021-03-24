@@ -2,29 +2,28 @@
 <table class="table table-bordered w-75">
   <thead class="thead-light">
     <tr>
-      <th>注文日</th>
-      <th>配送先</th>
+      <th>購入日時</th>
+      <th>購入者</th>
       <th>注文商品</th>
-      <th>支払い金額</th>
-      <th>ステータス</th>
+      <th>注文ステータス</th>
       <th>注文詳細</th>
     </tr>
   </thead>
 
   <% 
-        @orders.each do |order| 
-        name = eval("@name#{order.id}")
+    @orders.each do |order| 
+    name = eval("@name#{order.id}")
   %>
 
   <tr>
     <td><%= order.created_at %></td>
-    <td><%= order.address %></td>
+    <td><%= order.name %></td>
     <td><%= simple_format name %></td>
-    <td><%= order.sum %></td>
     <td><%= I18n.t("enums.order.order_status.#{order.status}") %></td>
-    <td><%= link_to '表示する', order_path(order.id) %></td>
+    <td><%= link_to '表示する', admin_order_path(order.id) %></td>
     　　　　
   </tr>
   <% end %>
 
 </table>
+<%= paginate @orders %>
