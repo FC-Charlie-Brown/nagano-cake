@@ -2,7 +2,8 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_customer!, only: [:edit, :update]
+  # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
@@ -11,7 +12,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    # @customer = Customer.new(customer_params)
+    # @customer.save
+    # redirect_to my_page_path
+   super
   end
 
   # GET /resource/edit
@@ -52,11 +56,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    edit_customers_path
+   my_page_path
   end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
     super(resource)
-  end
-end
+  end# 
+end # def sign_up_params
+  #   params.permit(:email, :password, :last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
+  # end
+  
