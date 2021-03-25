@@ -1,10 +1,14 @@
-
 <div class="text-center pt-5">
   <h1>本当に退会しますか？</h1>
   <p>退会すると、会員登録情報や<br>これまでの購⼊履歴が閲覧できなくなります。<br>退会する場合は、「退会する」をクリックしてください。</p>
-  <p><%= link_to '退会しない', my_page_path, class:'btn btn-primary'%></p>
-  <%= form_with  model:@customer,url: withdraw_path , method: :patch,local:true do |f| %>
-    <%= f.submit "退会する", class:'btn btn-danger' %>
-  <% end %>
+  
+  <br>
+  
+  <div class="row d-flex align-items-center justify-content-center">
+    <%= link_to '退会しない', my_page_path, class:'btn btn-primary'%>
+    <%= form_with  model:@customer,url: withdraw_path , method: :patch,local:true do |f| %>
+      <%= f.submit "退会する", class:'btn btn-danger offset-sm-1' %>
+    <% end %>
+  </div>
 </div>
 

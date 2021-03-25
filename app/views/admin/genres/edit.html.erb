@@ -1,5 +1,4 @@
-<div class="container">  
-  <h5 class= "toptext text-center">ジャンル編集</h5>
+<h5 class= "toptext text-center">ジャンル編集</h5>
   <%= form_with model: @genre, url: admin_genre_path, method: :patch, local: true do |f| %>
     <div class="form-group row">
       <%= f.label :name, 'ジャンル名', class:"col-sm-2 col-form-label"%>
@@ -10,5 +9,4 @@
         <button type="submit" class="btn btn-success col-sm-6">新規登録</button>   
       </div>
     </div>
-      <% end %>
-</div>
+  <% end %>
