@@ -1,17 +1,22 @@
-<h2>ログイン</h2>
+<div class="container">  
+<h5 class= "toptext text-center">ログイン</h5>
+<p class= "toptext text-center">新規登会員の方はこちらからログイン</p>
 
-<h6>会員の方はこちらからログイン</h6>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   
 
-  <div class="field">
-    <%= f.label :email,'メールアドレス' %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+   <div class="form-group row">
+    <%= f.label :email,'メールアドレス', class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password,'パスワード' %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+   <div class="form-group row">
+    <%= f.label :password,'パスワード', class:"col-sm-3 col-form-label" %>
+    <div class="col-sm-3">
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
   </div>
 
   <!--<% if devise_mapping.rememberable? %>-->
@@ -21,9 +26,11 @@
   <!--  </div>-->
   <!--<% end %>-->
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
+
+    <%= f.submit "ログイン",class:'btn btn-success col-sm-2 offset-sm-3' %>
+
 <% end %>
-<h6>会員登録がお済みでない方</h6>
+<h7 class= "toptext text-center">会員登録がお済みでない方</h7>
+
 <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+</div>
