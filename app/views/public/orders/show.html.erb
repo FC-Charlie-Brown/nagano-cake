@@ -11,7 +11,9 @@
   </tr>
   <tr>
     <th>支払い方法</th>
+
     <td><%= I18n.t("enums.order.payment_way.#{@order.payment_way}") %></td>
+
   </tr>
   <tr>
     <th>ステータス</th>
@@ -44,11 +46,11 @@
         <th>小計</th>
       </tr>
       </thead>
-      
+
       <% @order_details.each do |order_detail| %>
-      <% 
+      <%
         price = (order_detail.item.price.to_i*1.1).to_i
-        amount = order_detail.amount.to_i 
+        amount = order_detail.amount.to_i
         item_total_price = price * amount
     %>
       <tr>

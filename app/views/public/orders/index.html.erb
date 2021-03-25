@@ -11,10 +11,12 @@
     </tr>
   </thead>
 
+
   <% 
         @orders.each do |order| 
         name = eval("@name#{order.id}")
   %>
+
 
   <tr>
     <td><%= order.created_at %></td>
