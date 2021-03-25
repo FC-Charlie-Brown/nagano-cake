@@ -11,9 +11,13 @@
       </tr>
     </thead>
 
-      <% 
+
+
+
+  <% 
         @orders.each do |order| 
         name = eval("@name#{order.id}")
+
       %>
 
       <tr>
@@ -30,3 +34,5 @@
 　　　　</tr>
       <% end %>
   </table>
+
+
