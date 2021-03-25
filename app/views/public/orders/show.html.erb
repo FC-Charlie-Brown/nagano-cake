@@ -20,11 +20,11 @@
     </tr>
     <tr>
       <th class="bg-light">支払い方法</th>
-      <td><%= @order.payment_way %></td>
+      <td><%= I18n.t("enums.order.payment_way.#{@order.payment_way}") %></td>
     </tr>
     <tr>
       <th class="bg-light">ステータス</th>
-      <td><%= @order.status %></td>
+      <td><%= I18n.t("enums.order.order_status.#{@order.status}") %></td>
     </tr>
   </table>
 

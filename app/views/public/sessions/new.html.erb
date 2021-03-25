@@ -1,20 +1,21 @@
 <div class="container">  
 <h5 class= "toptext text-center">ログイン</h5>
-<p class= "toptext text-center">新規登会員の方はこちらからログイン</p>
+<h7 class= "toptext text-center">会員の方はこちらからログイン</h7>
+<br><br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   
 
    <div class="form-group row">
     <%= f.label :email,'メールアドレス', class:"col-sm-3 col-form-label" %>
-    <div class="col-sm-3">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <div class="col-sm-5">
+    <%= f.email_field :email, autofocus: true, placeholder:"email@example.com", autocomplete: "email", class: "form-control" %>
     </div>
   </div>
 
    <div class="form-group row">
     <%= f.label :password,'パスワード', class:"col-sm-3 col-form-label" %>
-    <div class="col-sm-3">
+    <div class="col-sm-5">
     <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
     </div>
   </div>
@@ -27,10 +28,14 @@
   <!--<% end %>-->
 
 
-    <%= f.submit "ログイン",class:'btn btn-success col-sm-2 offset-sm-3' %>
+    <%= f.submit "ログイン",class:'btn btn-primary col-sm-2 offset-sm-3' %>
 
 <% end %>
+</div>
 <h7 class= "toptext text-center">会員登録がお済みでない方</h7>
 
-<p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
-</div>
+<div class="row">
+  <div class="offset-sm-2">
+    <%= render "public/shared/links" %>から新規登録を行ってください。
+  </div>
+    </div>
