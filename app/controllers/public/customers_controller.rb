@@ -25,6 +25,7 @@ class Public::CustomersController < ApplicationController
     customer = current_customer
     customer.is_deleted = true
     customer.save
+    sign_out :customer
     redirect_to top_path
   end
 
