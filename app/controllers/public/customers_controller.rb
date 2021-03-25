@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   before_action :require_sign_in
 
   def show
-
+   @customer = current_customer
   end
 
   def edit
