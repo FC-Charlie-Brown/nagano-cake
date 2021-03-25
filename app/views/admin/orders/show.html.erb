@@ -7,7 +7,7 @@
   </tr>
   <tr>
     <th>注文日</th>
-    <td><%= @order.created_at %></td>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
   </tr>
   <tr>
     <th>配送先</th>
@@ -57,9 +57,9 @@
       </thead>
 
       <% @order_details.each do |order_detail| %>
-      <% 
+      <%
         price = (order_detail.item.price.to_i*1.1).to_i
-        amount = order_detail.amount.to_i 
+        amount = order_detail.amount.to_i
         item_total_price = price * amount
     %>
       <tr>
