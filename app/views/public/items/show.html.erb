@@ -1,17 +1,32 @@
-<%=  attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-3">
+    <%=  attachment_image_tag @item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %>
+  </div>
+  <div class="col-lg-7">
 
-  <h3><%= @item.name%></h3>
-  <%= @item.introduction%>
-  <h4><%= @item.price %></h4>
-  <a>(税込)</a>
-
-
-<%= form_with url: cart_items_path, local:true do |f| %>
-  <%= f.hidden_field :customer_id, :value => current_customer.id %>
-  <%= f.hidden_field :item_id, :value => @item.id %>
-  <div class='form-group'>
-    <%= f.select :amount, [1,2,3,4,5,6,7,8,9] %>
-　</div>
-
-  <%= f.submit "カートに入れる" %>
-<% end %>
+  	<h3><%= @item.name %></h3>
+    <p><%= @item.introduction %></p>
+    <br>
+    <span class="ltax">¥<%= (@item.price.to_i*1.1).to_s(:delimited) %></span><sapn class="stax">(税込)</sapn>
+    
+     
+      <%= form_with url: cart_items_path, local:true do |f| %>
+      <div class="row form-group">
+        <% if customer_signed_in? %>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <% else %>
+        <% end %>
+        
+        <%= f.select :amount, [1,2,3,4,5,6,7,8,9], class: "form-control col-sm-5"  %>
+        <% if customer_signed_in? %>
+        <%= f.submit "カートに入れる", class: "btn btn-success col-sm-3 offset-sm-2" %>
+        <% else %>
+        <%= link_to "カートに入れる", new_customer_session_path, class: "btn btn-success col-sm-3 offset-sm-2" %>
+        <% end %>
+      <% end %>
+      </div>
+  </div>
+</div>

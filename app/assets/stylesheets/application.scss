@@ -25,15 +25,34 @@
 
 header {
   width: 100%;
-  padding: 15px 0;
+  height: 170px;
   margin: 0 auto;
   background-color: #ffe4e1;
 }
-
-.nav-list {
-  text-align: right;
-  padding: 10px 0;
+.header-inner {
+  display: flex;
+  align-items: center;
+  max-width: 1140px;
   margin: 0 auto;
+
+  .btn a {
+    color: #212529;
+  }
+  .btn:not(:last-of-type) {
+    margin-right: 10px;
+  }
+  .btn:hover a {
+    color: #fff;
+  }
+}
+
+header nav {
+  margin-left: auto;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;
 }
 
 li {
@@ -69,60 +88,80 @@ footer {
   font-size: 24px;
 }
 
- .main-vi {
-    width: 800px;
-    height: 300px;
-    background: image-url('cake.jpg');
-    background-size: cover;
-    background-position: top center;
-    margin-top: 30px;
-    margin-bottom: 30px;
+.main-vi {
+  width: 800px;
+  height: 300px;
+  background: image-url('cake.jpg');
+  background-size: cover;
+  background-position: top center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .text-box {
-    width: 400px;
-    height: 300px;
-    margin: 0 auto;
-    position:relative
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .text {
   position: absolute;
   top: 50%;
-  -webkit-transform : translateY(-50%);
-  transform : translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
-.icon-relative{
+.icon-relative {
   position: relative;
 }
 
-.icon{
-  position: absolute; 
+.icon {
+  position: absolute;
   top: 10px;
   right: 5px;
   font-size: 30px;
   color: #b9c1ca;
 }
 
-.toptext{
-  width:240px;
-  margin:20px 0;
+.toptext {
+  width: 240px;
+  margin: 20px 0;
+  background-color: #f8f9fa;
+}
+
+.toptext2 {
+  width: 350px;
+  margin: 20px 0;
   background-color: #f8f9fa;
 }
 
 .button {
   display: flex;
-
 }
 
 .flex-container {
-　display: flex;
+  　display: flex;
   flex-direction: row;
-
 }
 
 .flex-item {
-　margin: 10px auto;
-	padding: 5px 10px;
+  　margin: 10px auto;
+  padding: 5px 30px;
+}
+
+.all_item {
+  margin-left: auto;
+}
+
+.ltax {
+  font-size: 20px;
+}
+.stax {
+  font-size: 10px;
+}
+
+.text-white-with-shadow {
+  color: #fff;
+  text-shadow: 0px 0px 6px #000;
 }

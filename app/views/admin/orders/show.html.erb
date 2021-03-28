@@ -1,2 +1,82 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+<table class="table table-bordered w-75">
+  <h5>注文情報</h5>
+  <tr>
+    <th>購入者</th>
+    <td><%= "#{@customer.last_name}" + " #{@customer.first_name}"  %></td>
+  </tr>
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.created_at %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td><%= @order.address %></td>
+  </tr>
+  <tr>
+    <th>支払い方法</th>
+    <td><%= I18n.t("enums.order.payment_way.#{@order.payment_way}") %></td>
+  </tr>
+  <tr>
+    <th>ステータス</th>
+    <td>
+      <%= form_with model:@order, url: admin_order_path(@order.id), local:true, method: :patch do |f| %>
+         <%= f.select :status, {'入金待ち': 0, '入金確認': 1,'製作中': 2,'発送準備中': 3,'発送済み': 4}, { selected: @order.status}, { class: 'form-control' , required: true } %>
+        <%= f.submit "変更",class: 'btn btn-success' %>
+      <% end %>
+    </td>
+
+  </tr>
+  </table>
+
+  <table class="table table-bordered w-75">
+    <h5>請求情報</h5>
+    <tr>
+      <th>商品合計</th>
+      <td><%= "#{@total_price}円" %></td>
+    </tr>
+    <tr>
+      <th>配送料</th>
+      <td><%= "#{@order.shipping_fee}円" %></td>
+    </tr>
+    <tr>
+      <th>ご請求額</th>
+      <td><%= "#{@order.sum}円" %></td>
+    </tr>
+    </table>
+
+    <table class="table table-bordered w-75">
+      <h5>注文内容</h5>
+      <tr>
+        <th>商品</th>
+        <th>単価（税込）</th>
+        <th>個数</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+      </tr>
+      </thead>
+
+      <% @order_details.each do |order_detail| %>
+      <% 
+        price = (order_detail.item.price.to_i*1.1).to_i
+        amount = order_detail.amount.to_i 
+        item_total_price = price * amount
+    %>
+      <tr>
+        <td>
+          <%=  attachment_image_tag order_detail.item, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: "300x300",class:'cart-item-image' %><%= order_detail.item.name %>
+        </td>
+        <td><%= "#{price}円" %></td>
+        <td>
+          <%= "#{amount}" %>
+        </td>
+        <td><%= "#{item_total_price}円" %></td>
+        <td>
+          <%= form_with model:order_detail, url: admin_order_detail_path(order_detail.id), local:true, method: :patch do |f| %>
+            <%= f.select :making_status, {'着手不可': 0, '製作待ち': 1,'製作中': 2,'製作完了': 3 }, { selected: order_detail.making_status}, { class: 'form-control' , required: true } %>
+            <%= f.submit "変更",class: 'btn btn-success' %>
+           <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>

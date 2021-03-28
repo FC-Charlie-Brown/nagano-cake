@@ -1,38 +1,41 @@
 <h5 class= "toptext text-center">商品</h5>
-<div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %><br>
+      <%= attachment_image_tag @item, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg", size: "200x150" %><br>
     </div>
     <div class="col-lg-7">
-      <table class="">
-        <tr>
-          <td>商品名</td> 
-          <td><%= @item.name %></td> 
-        </tr>
-         <tr>
-          <td>商品説明</td> 
-          <td><%= @item.introduction %></td> 
-        </tr>
-        <tr>
-          <td>ジャンル</td> 
-          <td><%= @item.genre.name%></td> 
-        </tr>
-        <tr>
-          <td>税込価格<br>（税抜き価格）</td> 
-          <td><%= @item.price %></td> 
-        </tr>
-        <tr>
-          <td>販売ステータス</td> 
-          <td>   <% if @item.sale_status %>
-            <span>販売中</span>
+
+  	  <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">商品名</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.name %></legend>
+      </div>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">商品説明</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.introduction %></legend>
+      </div>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">ジャンル</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.genre.name%></legend>
+      </div>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">税込価格<br>(税抜価格)</legend>
+        <legend class="form-control-plaintext col-sm-3"><%= @item.price.to_i*1.1 %>(<%= @item.price %>)円</legend>
+      </div>
+  
+      <div class="row form-group">
+  　    <legend class="col-sm-3 col-form-label">販売ステータス</legend>
+          <legend class="form-control-plaintext col-sm-3">
+          	<% if @item.sale_status %>
+              <span class="text-success">販売中</span>
             <% else %>
-            <span>販売停止中</span>
-            <% end %>
-          </td> 
-        </tr>
-      </table>
-      <%= link_to "編集する", edit_admin_item_path(@item.id), method: :get, class: "btn btn-success"%>
+              <span class="text-muted">販売停止中</span>
+             <% end %>
+          </legend>
+      </div>
+        <%= link_to "編集する", edit_admin_item_path(@item.id), method: :get, class: "btn btn-success col-sm-3 offset-sm-2"%>
     </div>
- </div>
-</div>
+  </div>
+

@@ -47,13 +47,14 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :customers, only: [:edit, :index, :show, :update]
 
-      resources :orders, only: [:update, :show]
+      resources :orders, only: [:index,:update, :show]
 
       resources :items, except: [:destroy]
 
       resources :genres, only: [:edit, :create, :index, :update]
 
-      patch '/order_details', to: 'order_details#update', as: 'order_details'
+
+      resources :order_details, only: [:update]
       get '/', to: 'homes#top', as: 'top'
     end
 

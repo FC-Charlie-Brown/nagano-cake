@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   before_action :require_sign_in
 
   def show
-
+   @customer = current_customer
   end
 
   def edit
@@ -25,6 +25,7 @@ class Public::CustomersController < ApplicationController
     customer = current_customer
     customer.is_deleted = true
     customer.save
+    sign_out :customer
     redirect_to top_path
   end
 
